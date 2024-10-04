@@ -1,1 +1,1 @@
-# assign-issue-type-from-labels
+# assign-issue-type-from-labels-action
