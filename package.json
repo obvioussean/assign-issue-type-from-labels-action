@@ -1,0 +1,41 @@
+{
+  "name": "assign-issue-type-from-labels-action",
+  "version": "0.0.1",
+  "description": "Finds issues with the matching label and assigns the issue type based on the label",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build-action": "ncc build src/index.ts --out ./dist",
+    "build-app": "tsc",
+    "dev": "tsc && env-cmd node dist/app.js",
+    "app": "node dist/app.js",
+    "app-env": "env-cmd node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obvioussean/assign-issue-type-from-labels-action.git"
+  },
+  "author": "obvioussean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/obvioussean/assign-issue-type-from-labels-action/issues"
+  },
+  "homepage": "https://github.com/obvioussean/assign-issue-type-from-labels-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0",
+    "@octokit/graphql": "^8.1.1",
+    "@octokit/graphql-schema": "^15.25.0",
+    "@octokit/plugin-throttling": "^9.3.1",
+    "@octokit/rest": "^21.0.2",
+    "env-cmd": "^10.1.0",
+    "octokit": "^4.0.2"
+  },
+  "devDependencies": {
+    "@octokit/types": "^13.5.1",
+    "@types/node": "^22.7.3",
+    "@vercel/ncc": "^0.38.2",
+    "typescript": "^5.6.2"
+  }
+}
