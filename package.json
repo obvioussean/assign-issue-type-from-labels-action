@@ -2,16 +2,17 @@
   "name": "assign-issue-type-from-labels-action",
   "version": "0.0.1",
   "description": "Finds issues with the matching label and assigns the issue type based on the label",
-  "main": "dist/index.js",
+  "main": "dist-action/index.js",
   "type": "module",
   "scripts": {
-    "build-action": "ncc build src/index.ts --out ./dist",
+    "build-action": "ncc build src/index.ts --out ./dist-action",
     "build-app": "tsc",
-    "dev": "tsc && env-cmd node dist/app.js",
-    "app": "node dist/app.js",
-    "app-env": "env-cmd node dist/app.js",
+    "dev": "tsc && env-cmd node dist-app/app.js",
+    "app": "node dist-app/app.js",
+    "app-env": "env-cmd node dist-app/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "node -e \"require('fs').rmdirSync('dist/', { recursive: true }); process.exit(0);\""
+    "clean": "npm run rmdir -- dist-app dist-action",
+    "rmdir": "node -e \"var fs = require('fs'); process.argv.slice(1).map((fpath) => fs.rmdirSync(fpath, { recursive: true })); process.exit(0);\""
   },
   "repository": {
     "type": "git",

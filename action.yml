@@ -2,7 +2,7 @@ name: 'Assign Issue Type From Label Action'
 description: 'Assigns the issue type based on the label applied to the issue' 
 runs:
   using: 'node20'
-  main: 'dist/index.js'
+  main: 'dist-action/index.js'
 branding:
   icon: alert-circle
   color: green
