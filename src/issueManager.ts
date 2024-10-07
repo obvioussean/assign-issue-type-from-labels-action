@@ -66,6 +66,16 @@ export class IssueManager {
         );
     }
 
+    public getLabels(issue: Issue): string[] {
+        const labels: string[] = [];
+
+        if (issue.labels && issue.labels.nodes) {
+            labels.push(...issue.labels.nodes.map(l => l!.name.toLocaleLowerCase()));
+        }
+
+        return labels;
+    }
+
     private async pageIssues(query: string, cursor?: string): Promise<Issue[]> {
         const items: Issue[] = [];
 

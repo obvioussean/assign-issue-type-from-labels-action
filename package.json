@@ -10,7 +10,8 @@
     "dev": "tsc && env-cmd node dist/app.js",
     "app": "node dist/app.js",
     "app-env": "env-cmd node dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "node -e \"require('fs').rmdirSync('dist/', { recursive: true }); process.exit(0);\""
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
-name: 'Sync Issue Label to Project Field Action'
-description: 'Finds all values for the specified fields, then set's the field value on every item that has a matching label' 
+name: 'Assign Issue Type From Label Action'
+description: 'Assigns the issue type based on the label applied to the issue' 
 runs:
   using: 'node20'
   main: 'dist/index.js'
@@ -8,20 +8,10 @@ branding:
   color: green
 inputs:
   owner-name:
-    description: 'The owning organization/user for the project'
+    description: 'The owning organization or user'
     type: string
     required: true
-  project-id:
+  repository-name:
     description: 'The id of the project'
-    type: number
-    required: true
-  field-name:
-    description: 'The field to reference for the project'
     type: string
     required: true
-  label-overrides:
-    description: 'If multiple labels map to a single field value, include the mapping here'
-    type: string
-    required: false
-  
-  

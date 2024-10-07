@@ -32,21 +32,12 @@ const octoKit = new ThrottledOctokit({
         },
     },
 });
+
 const graphql = octoKit.graphql.defaults({
     headers: {
         "GraphQL-Features": "issue_types"
     }
-})
-
-function getLabels(issue: Issue): string[] {
-    const labels: string[] = [];
-
-    if (issue.labels && issue.labels.nodes) {
-        labels.push(...issue.labels.nodes.map(l => l!.name.toLocaleLowerCase()));
-    }
-
-    return labels;
-}
+});
 
 (async () => {
     const issueManager = new IssueManager(graphql, "github", "security-center");
@@ -55,7 +46,7 @@ function getLabels(issue: Issue): string[] {
     const issueTypes = await issueTypesManager.getIssueTypes();
 
     for (const issue of issues) {
-        const labels = getLabels(issue);
+        const labels = issueManager.getLabels(issue);
         const issueType = issueTypes.find(i => labels.find(l => i.name.toLocaleLowerCase() === l));
         if (issueType && issue.issueType?.name !== issueType.name) {
             await issueManager.updateIssueIssueType(issue.id, issueType.id);
