@@ -40,8 +40,10 @@ const graphql = octoKit.graphql.defaults({
 });
 
 (async () => {
-    const issueManager = new IssueManager(graphql, "github", "security-center");
-    const issueTypesManager = new IssueTypeManager(graphql, "github", "security-center");
+    const owner = `${process.env.OWNER}`;
+    const repositoryName = `${process.env.REPOSITORY_NAME}`;
+    const issueManager = new IssueManager(graphql, owner, repositoryName);
+    const issueTypesManager = new IssueTypeManager(graphql, owner, repositoryName);
     const issues = await issueManager.getIssues();
     const issueTypes = await issueTypesManager.getIssueTypes();
 
