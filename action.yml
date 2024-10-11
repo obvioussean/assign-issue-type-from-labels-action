@@ -12,6 +12,6 @@ inputs:
     type: string
     required: true
   repository-name:
-    description: 'The id of the project'
+    description: 'The name of the repo'
     type: string
     required: true
